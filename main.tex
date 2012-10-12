@@ -1,0 +1,231 @@
+% This is "sig-alternate.tex" V1.3 OCTOBER 2002
+% This file should be compiled with V1.6 of "sig-alternate.cls" OCTOBER 2002
+%
+% This example file demonstrates the use of the 'sig-alternate.cls'
+% V1.6 LaTeX2e document class file. It is for those submitting
+% articles to ACM Conference Proceedings WHO DO NOT WISH TO
+% STRICTLY ADHERE TO THE SIGS (PUBS-BOARD-ENDORSED) STYLE.
+% The 'sig-alternate.cls' file will produce a similar-looking,
+% albeit, 'tighter' paper resulting in, invariably, fewer pages.
+%
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V1.6) produces:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) NO page numbers
+%
+% as against the acm_proc_article-sp.cls file which
+% DOES NOT produce 1) thru' 3) above.
+%
+% Using 'sig-alternate.cls' you have control, however, from within
+% the source .tex file, over both the CopyrightYear
+% (defaulted to 2002) and the ACM Copyright Data
+% (defaulted to X-XXXXX-XX-X/XX/XX).
+% e.g.
+% \CopyrightYear{2003} will cause 2002 to appear in the copyright line.
+% \crdata{0-12345-67-8/90/12} will cause 0-12345-67-8/90/12 to appear in the copyright line.
+%
+% ---------------------------------------------------------------------------------------------------------------
+% This .tex source is an example which *does* use
+% the .bib file (from which the .bbl file % is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission, you *NEED* to 'insert'
+% your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% ================= IF YOU HAVE QUESTIONS =======================
+% Questions regarding the SIGS styles, SIGS policies and
+% procedures, Conferences etc. should be sent to
+% Adrienne Griscti (griscti@acm.org)
+%
+% Technical questions _only_ to
+% Gerald Murray (murray@acm.org)
+% ===============================================================
+%
+% For tracking purposes - this is V1.3 - OCTOBER 2002
+
+\documentclass{sig-alternate-10pt}
+%\documentclass[letterpaper,twocolumn,10pt]{article}
+%\usepackage{usenix}
+%\usepackage[compact]{titlesec}
+\usepackage{subfigure}
+\usepackage{latexsym}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{array}
+
+%\usepackage{cite}
+%\usepackage{bibspacing}
+
+\allowdisplaybreaks
+
+\long\def\comment#1{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}[lemma]{Corollary}
+
+\newcommand{\myatop}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+\newcommand{\subscript}[1]{\ensuremath{_\textrm{#1}}}
+\newcommand{\subsubscript}[1]{\ensuremath{_{_{_{\text{#1}}}}}}
+\newcommand{\mean}[1]{\bar{\mathsf{#1}}}
+\newcommand{\var}[1]{\mathsf{{#1}}^{\mathrm{var}}}
+
+\newcommand{\subcaption}[1]{\centerline{#1}\vspace{0.1in}}
+\newcommand{\ie}{{\em i.e.}}
+\newcommand{\eg}{{\em e.g.}}
+\newcommand{\etal}{{\em et al.}}
+\newcommand{\netcomp}[1]{\noindent {\bf #1}}
+\newcommand{\para}[1]{\smallskip\noindent {\bf #1}}
+\newcommand{\paraNS}[1]{\noindent {\bf #1}}
+\newcommand{\reminder}[1]{\textbf{XXX #1 XXX}}
+\newcommand{\defas}{\ensuremath{\stackrel{\scriptscriptstyle{\triangle}}{=}}}
+\newcommand{\negskip}{\vspace{-0.1in}}
+\newcommand{\pname}[0]{TSML}
+\newcommand{\sadd}[1]{\textcolor{blue}{\uuline{#1}}}
+\newcommand{\sdel}[1]{\sout{#1}}
+\newcommand{\scomment}[2][Swati]{{\bf\blue [#1: #2]}}
+
+\newlength{\figurewidthA} % 1 figure in a row (1 column)
+\setlength{\figurewidthA}{0.95\columnwidth}
+
+\newlength{\figurewidthB} % 2 figures in a row (1 column)
+\setlength{\figurewidthB}{0.485\columnwidth}
+
+\newlength{\figurewidthC} % adjust sizes of figures to save space
+\setlength{\figurewidthC}{0.65\columnwidth}
+
+\newlength{\figurewidthE} % 3 figures in a row (2 columns)
+\setlength{\figurewidthE}{0.33\columnwidth}
+
+\newlength{\figurewidthF} % 4 figures in a row (2 columns)
+\setlength{\figurewidthF}{1.5in} %#0.5\columnwidth}
+
+\newcommand{\squishlist}{
+   \begin{list}{$\bullet$}
+    { \setlength{\itemsep}{0pt}      \setlength{\parsep}{3pt}
+      \setlength{\topsep}{3pt}       \setlength{\partopsep}{0pt}
+      \setlength{\leftmargin}{3.5mm} \setlength{\labelwidth}{1em}
+      \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishlisttwo}{
+   \begin{list}{-}
+    { \setlength{\itemsep}{0pt}    \setlength{\parsep}{0pt}
+      \setlength{\topsep}{0pt}     \setlength{\partopsep}{0pt}
+      \setlength{\leftmargin}{1em} \setlength{\labelwidth}{1.5em}
+      \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishend}{
+    \end{list}  }
+
+%%%%%%%%%%%%%% GET SOME SPACE BY CHANGING TEXT SIZE %%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\baselinestretch}{1.15}
+%\setlength{\columnsep}{0.22in}
+\newcommand{\protoname}{\mbox{\small{\textsf{DMR}}}}
+%%%%%%%%% To format algorithm %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{linenum}
+\newenvironment{algorithm}[2]{\setcounter{linenum}{0}\begin{tabbing}\textsc{#1}\((#2)\)\\
+\makebox[0.2in]{}\=\+\kill}{\end{tabbing}}
+\newenvironment{algo}{\setcounter{linenum}{0}\begin{tabbing}\makebox[0.2in]{}\=\+\kill}{\end{tabbing}}
+\newenvironment{protocol}{\setcounter{linenum}{0}\begin{tabbing}\makebox[0.05in]{}\=\+\kill}{\end{tabbing}}
+\newenvironment{proto}{\setcounter{linenum}{0}\begin{tabbing}\makebox[-0.02in]{}\=\+\kill}{\end{tabbing}}
+\newcommand{\al}[1]{\'#1\\}
+\newcommand{\all}[1]{\addtocounter{linenum}{1}\arabic{linenum}\'#1\\}
+\newcommand{\av}[1]{\textit{#1}}
+\newcommand{\aproc}[2]{\textsc{#1}\((#2)\)}
+\newcommand{\kw}[1]{\textbf{#1}}
+\newcommand{\msg}[2]{$\langle$\textsl{#1};$#2 \rangle$}
+
+%%%%%%%%% GET SOME SPACE BY CHANGING THE ENVIRONMENT %%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{sitemize}{%
+  \begin{list}{$\bullet$}{%
+    %\setlength{\rightmargin}{\leftmargin}
+    \setlength{\itemsep}{0.2cm}%
+    \setlength{\leftmargin}{1.5em}%
+    \setlength{\topsep}{4pt plus 2pt minus 2pt}%
+    \setlength{\parsep}{0.0cm}}%
+  }{\end{list}}
+
+\newenvironment{senumerate}{%
+   \begin{list}{\arabic{enumi}.}{%
+    \setlength\labelwidth{1.5em}%
+    \setlength\leftmargin{1.5em}%
+    \setlength{\topsep}{4pt plus 2pt minus 2pt}%
+    \setlength\itemsep{0.0cm}%
+    \usecounter{enumi}}%
+  }{\end{list}}
+
+\newlength{\figurewidthD} % 2 figures a row (1 column)
+\setlength{\figurewidthD}{0.8\columnwidth}
+
+%%%%%%%% to calculate the time %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcount\hour \newcount\minute
+\hour=\time  \divide \hour by 60
+\minute=\time
+\loop \ifnum \minute > 59 \advance \minute by -60 \repeat
+\def\drafttime{\ifnum \hour<13 \number\hour:%
+                      \ifnum \minute<10 0\fi
+                      \number\minute
+                      \ifnum \hour<12 \ AM\else \ PM\fi
+         \else \advance \hour by -12 \number\hour:%
+                      \ifnum \minute<10 0\fi
+                      \number\minute \ PM\fi}
+\def\timestamp{\today \ \drafttime}
+
+\renewcommand{\baselinestretch}{1.0}
+\newcommand{\figurename}{Fig.}
+\newcommand{\captionfonts}{\small}
+
+%\makeatletter  % Allow the use of @ in command names
+%\long\def\@makecaption#1#2{%
+%  \vskip\abovecaptionskip
+%  \sbox\@tempboxa{{\captionfonts #1: #2}}%
+%  \ifdim \wd\@tempboxa >\hsize
+%    {\captionfonts #1: #2\par}
+%  \else
+%    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+%  \fi
+%  \vskip\belowcaptionskip}
+%\makeatother   % Cancel the effect of \makeatletter
+
+\DeclareGraphicsRule{.jpg}{eps}{.bb}{}
+\DeclareGraphicsRule{.png}{eps}{.bb}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\twocolumn[%
+  \begin{center}
+    {\LARGE\textbf{\textrm{Energy Efficient Wireless Display}}}\\
+      \medskip
+       \smallskip
+      \end{center}
+  ]%\twocolumn
+
+\input{abstract}
+\input{intro}
+\input{implement}
+\input{testbed}
+\input{related}
+\input{conclusion}
+
+{\footnotesize
+%\renewcommand{\baselinestretch}{0.93}
+\setlength{\parskip}{0pt}
+\bibliographystyle{abbrv}
+\bibliography{wireless}  % sigproc.bib is the name of the Bibliography in
+}
+
+%\appendix
+%\balancecolumns % GM July 2000
+
+% That's all folks!
+\end{document}
